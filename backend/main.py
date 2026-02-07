@@ -1,13 +1,25 @@
 import os
 from fastapi import FastAPI, status, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from dotenv import load_env
+from dotenv import load_dotenv
+from app.routers import router
 
-load_env()
+load_dotenv()
 
 app = FastAPI(
     title="Instant Dashboard App"
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(router)
 
 @app.get("/")
 def home():
