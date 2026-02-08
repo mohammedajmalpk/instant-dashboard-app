@@ -1,13 +1,14 @@
 from pydantic import BaseModel, field_validator
 from fastapi import HTTPException
 import json
+from typing import Any, Dict
 
 class DashboardRequestModel(BaseModel):
     """
         payload data from dashboard
     """
     json_data: str
-    prompt: str
+    user_prompt: str
 
     @field_validator("json_data")
     def validate_json_data(cls, v):
@@ -20,7 +21,7 @@ class DashboardRequestModel(BaseModel):
         except json.JSONDecodeError as err:
             raise HTTPException(status_code=400, detail="Invalid JSON format")
 
-    @field_validator("prompt")
+    @field_validator("user_prompt")
     def validate_prompt(cls, v):
         """
             validate prompt
@@ -35,6 +36,8 @@ class DashboardResponseModel(BaseModel):
     """
         Response data
     """
-    html: str
     status: int
-    detail: str
+    html: str
+    success: bool
+    message: str
+    data_summary: Dict[str, Any]
