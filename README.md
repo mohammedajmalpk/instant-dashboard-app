@@ -61,9 +61,9 @@ simply open `frontend/index.html` directly in your browser.
 
 ### 5. Access the Application
 
-- **Frontend Interface:** http://localhost:3000
-- **API Documentation:** http://localhost:8000/docs
-- **Health Check:** http://localhost:8000/health
+- **Frontend Interface:** https://instant-dashboard-app.vercel.app/
+- **API Documentation:** https://instant-dashboard-app.onrender.com/docs
+- **Health Check:** https://instant-dashboard-app.onrender.com/health
 
 ## Running with Docker
 
@@ -89,27 +89,8 @@ Or use an environment file:
 docker run -p 8000:8000 --env-file .env instant-dashboard-backend
 ```
 
-## API Usage
 
-Send a POST request to `/api/v1/generate-dashboard`:
-```json
-{
-  "json_data": "{\"sales\": [100, 200, 300], \"months\": [\"Jan\", \"Feb\", \"Mar\"]}",
-  "user_prompt": "Create a bar chart showing sales data by month"
-}
-```
 
-The API returns HTML code for a complete dashboard.
-
-**Example with curl:**
-```bash
-curl -X POST http://localhost:8000/api/v1/generate-dashboard \
-  -H "Content-Type: application/json" \
-  -d '{
-    "json_data": "{\"sales\": [100, 200, 300]}",
-    "user_prompt": "Create a sales dashboard"
-  }'
-```
 
 ## Features
 
