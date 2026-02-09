@@ -32,13 +32,13 @@ async def generate_dashboard(request: DashboardRequestModel):
     """
     try:
         parsed_json = json.loads(request.json_data)
-        find_total = extract_numeric_values(parsed_json)
-        total = sum(find_total)
+        total = sum(extract_numeric_values(parsed_json))
 
         data_summary = {
             "keys": list(parsed_json.keys()),
             "structure": type(parsed_json).__name__
         }
+
         user_message = f"""Here is the JSON data:
 
         {request.json_data}
