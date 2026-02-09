@@ -78,9 +78,8 @@ async def generate_dashboard(request: DashboardRequestModel):
 
         return DashboardResponseModel(
             status=status.HTTP_200_OK,
-            success=True,
             html=cleaned_html,
-            message="dashboard generated successfully",
+            detail="dashboard generated successfully",
             data_summary=data_summary
         )
     except ValueError as err:

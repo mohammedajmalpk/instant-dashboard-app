@@ -38,6 +38,5 @@ class DashboardResponseModel(BaseModel):
     """
     status: int
     html: str
-    success: bool
-    message: str
+    detail: str
     data_summary: Dict[str, Any]
