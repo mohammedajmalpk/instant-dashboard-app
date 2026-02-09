@@ -1,5 +1,5 @@
 console.log("API load....")
-const API_URL = 'https://bded-117-216-149-79.ngrok-free.app/api/v1/generate-dashboard';
+const API_URL = 'https://instant-dashboard-app.onrender.com/api/v1/generate-dashboard';
 let currentHTML = '';
 
 // validate json as user types
