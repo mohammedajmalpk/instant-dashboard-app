@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Generate</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ The Instant Dashboard</h1>
+            <p>Transform JSON data into beautiful dashboards</p>
+        </div>
+
+        <div class="content">
+            <!-- Left Side: Input Section -->
+            <div class="input-section">
+                <!-- JSON Input - Large text area -->
+                <div class="form-group">
+                    <label>
+                        📊 JSON Input <span class="required">*</span>
+                        <span id="jsonValidation"></span>
+                    </label>
+                    <textarea
+                        id="jsonInput"
+                        placeholder='Enter your JSON data here...'
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+
+                <!-- User Prompt - Text box -->
+                <div class="form-group">
+                    <label>
+                        💬 User Prompt <span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="userPrompt"
+                        placeholder="Describe how you want your dashboard to look..."/>
+                </div>
+
+                <!-- Generate Button -->
+                <button id="generateBtn" onclick="generateDashboard()">
+                    ✨ Generate Dashboard
+                </button>
+
+                <!-- Status messages (Error Handling) -->
+                <div class="status" id="status"></div>
+
+                <!-- Example prompts -->
+                <div class="examples">
+                    <h4>💡 Try these example prompts:</h4>
+                    <span class="example-item" onclick="setPrompt('Create a clean business dashboard. Show a total spending summary at the top and a simple table below for the items. Use a professional font and light grey background.')">
+                        📋 Business Table
+                    </span>
+                    <span class="example-item" onclick="setPrompt('Make a dark themed dashboard with a colorful bar chart showing all expenses. Add the total at the top in large text.')">
+                        🌙 Dark Chart
+                    </span>
+                    <span class="example-item" onclick="setPrompt('Create a modern card-based layout with expense cards showing icons and amounts. Use gradient backgrounds.')">
+                        🎨 Modern Cards
+                    </span>
+                    <span class="example-item" onclick="setPrompt('Build a minimalist dashboard with a pie chart breaking down expenses by percentage. Use pastel colors.')">
+                        🥧 Pie Chart
+                    </span>
+                </div>
+            </div>
+
+            <!-- Preview section -->
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h3>👁️ Preview</h3>
+                    <div class="preview-actions">
+                        <button class="icon-btn" onclick="refreshPreview()" title="Refresh">
+                            🔄 Refresh
+                        </button>
+                        <button class="icon-btn" onclick="openInNewTab()" title="Open in new tab">
+                            🗗 New Tab
+                        </button>
+                    </div>
+                </div>
+
+                <div class="preview-placeholder" id="placeholder">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <p>Your dashboard will appear here</p>
+                    <p style="font-size: 12px; opacity: 0.7;">Enter data and click Generate</p>
+                </div>
+
+                <iframe id="previewFrame" title="Dashboard Preview"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+</body>
+</html>
